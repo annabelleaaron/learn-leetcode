@@ -31,6 +31,7 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
+        # my solution
         for i, n in enumerate(nums):
             m = target - n
             if m in nums[i+1:]:
@@ -39,3 +40,11 @@ class Solution(object):
                     return [nums.index(n), nums.index(m, nums.index(n) + 1)]
                 else:
                     return [nums.index(n), nums.index(m)]
+        
+        # this solution is more efficient since it only looks for the difference in the hashmap O(n) rather than checking through the nums array based on the current number in the array O(n^2) 
+        prevMap = {} # val : index
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in prevMap:
+                return [prevMap[diff], i]
+            prevMap[n] = i
