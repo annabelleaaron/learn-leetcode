@@ -48,3 +48,21 @@ class Solution(object):
             if diff in prevMap:
                 return [prevMap[diff], i]
             prevMap[n] = i
+
+
+# 1929. CONCATENATION OF ARRAY
+class Solution(object):
+    def getConcatenation(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        # my solution
+        return nums + nums
+    
+        # what if the interviewer wants to expand the concatenation to 3n?
+        ans = []
+        for i in range(3):
+            for n in nums:
+                ans.append(n)
+        return ans
